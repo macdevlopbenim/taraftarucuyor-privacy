@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası — Taraftar Uçuyor</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap');
+
+    :root {
+      --green:  #2ea043;
+      --dark:   #0d1117;
+      --card:   #161b22;
+      --border: rgba(255,255,255,0.08);
+      --text:   #e6edf3;
+      --muted:  #8b949e;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0 0 80px;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0d2818 0%, #0d1117 60%);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 24px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% -10%, rgba(46,160,67,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(46,160,67,0.15);
+      border: 1px solid rgba(46,160,67,0.4);
+      color: var(--green);
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(26px, 6vw, 42px);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 8px;
+    }
+
+    header h1 span { color: var(--green); }
+
+    .emoji-row {
+      font-size: 28px;
+      margin: 16px 0 4px;
+      letter-spacing: 8px;
+    }
+
+    .update-date {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* Content */
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 48px 24px 0;
+    }
+
+    .intro-card {
+      background: rgba(46,160,67,0.07);
+      border: 1px solid rgba(46,160,67,0.25);
+      border-radius: 14px;
+      padding: 22px 26px;
+      margin-bottom: 40px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: #c9d1d9;
+    }
+
+    .intro-card strong { color: var(--green); }
+
+    section {
+      margin-bottom: 36px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(46,160,67,0.12);
+      border: 1px solid rgba(46,160,67,0.3);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 24px;
+    }
+
+    p {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: #c9d1d9;
+    }
+
+    p + p { margin-top: 12px; }
+
+    ul {
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    ul li {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: #c9d1d9;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    ul li:last-child { border-bottom: none; }
+
+    ul li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .highlight {
+      display: inline-block;
+      background: rgba(46,160,67,0.12);
+      color: var(--green);
+      font-weight: 500;
+      padding: 1px 7px;
+      border-radius: 5px;
+      font-size: 13.5px;
+    }
+
+    /* Contact */
+    .contact-card {
+      background: linear-gradient(135deg, rgba(46,160,67,0.10) 0%, rgba(13,17,23,0) 100%);
+      border: 1px solid rgba(46,160,67,0.3);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .contact-card p { color: var(--muted); font-size: 14px; margin-bottom: 14px; }
+
+    .contact-card a {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.04em;
+      padding: 11px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .contact-card a:hover { opacity: 0.85; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    footer .app-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      color: var(--text);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    @media (max-width: 480px) {
+      .card, .contact-card { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="badge">Gizlilik Politikası</div>
+  <h1>Taraftar <span>Uçuyor</span></h1>
+  <div class="emoji-row">🦁 🦅 🐤 🐟</div>
+  <p class="update-date">Son güncelleme: Mart 2026</p>
+</header>
+
+<div class="container">
+
+  <div class="intro-card">
+    <strong>Taraftar Uçuyor</strong> uygulamasını kullandığınız için teşekkür ederiz.
+    Gizliliğiniz bizim için önemlidir. Bu politika, uygulamamızın hangi verileri
+    topladığını ve bu verileri nasıl kullandığını açıkça ortaya koymaktadır.
+  </div>
+
+  <!-- Veri Toplama -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">📊</div>
+      <h2>Topladığımız Veriler</h2>
+    </div>
+    <div class="card">
+      <p>Taraftar Uçuyor, kullanıcılardan <span class="highlight">kişisel veri toplamamaktadır</span>. Uygulama yalnızca şu bilgileri cihazınızda yerel olarak saklar:</p>
+      <ul>
+        <li>En yüksek oyun skoru (sadece cihazınızda)</li>
+        <li>Ses açık/kapalı tercihiniz (sadece cihazınızda)</li>
+        <li>Titreşim açık/kapalı tercihiniz (sadece cihazınızda)</li>
+      </ul>
+      <p style="margin-top:14px;">Bu bilgiler yalnızca <span class="highlight">Apple UserDefaults</span> aracılığıyla cihazınızda tutulur ve hiçbir sunucuya gönderilmez.</p>
+    </div>
+  </section>
+
+  <!-- Toplanmayan Veriler -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <h2>Toplamadığımız Veriler</h2>
+    </div>
+    <div class="card">
+      <p>Aşağıdaki bilgileri hiçbir şekilde toplamıyor, saklamıyor veya üçüncü taraflarla paylaşmıyoruz:</p>
+      <ul>
+        <li>Ad, soyad veya e-posta adresi</li>
+        <li>Konum bilgisi</li>
+        <li>Kamera veya mikrofon erişimi</li>
+        <li>Kişiler veya takvim verisi</li>
+        <li>Cihaz tanımlayıcıları veya reklam ID'si</li>
+        <li>Kullanım analitiği veya çökme raporları</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Üçüncü Taraf -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">🌐</div>
+      <h2>Üçüncü Taraf Hizmetler</h2>
+    </div>
+    <div class="card">
+      <p>Uygulamamız herhangi bir üçüncü taraf analitik aracı, reklam ağı veya sosyal medya entegrasyonu <span class="highlight">içermemektedir</span>.</p>
+      <p>Uygulama tamamen çevrimdışı çalışır; internet bağlantısı gerektirmez ve hiçbir sunucuya bağlantı kurmaz.</p>
+    </div>
+  </section>
+
+  <!-- Çocuklar -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">👶</div>
+      <h2>Çocukların Gizliliği</h2>
+    </div>
+    <div class="card">
+      <p>Taraftar Uçuyor, 4 yaş ve üzeri tüm kullanıcılar için uygundur. Uygulamamız kişisel veri toplamadığından, çocuklara ait hiçbir bilgi de toplanmamakta veya işlenmemektedir.</p>
+    </div>
+  </section>
+
+  <!-- Değişiklikler -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">📝</div>
+      <h2>Politika Değişiklikleri</h2>
+    </div>
+    <div class="card">
+      <p>Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Herhangi bir değişiklik olduğunda bu sayfadaki "Son güncelleme" tarihi değiştirilecektir. Uygulamayı kullanmaya devam etmeniz, güncel politikayı kabul ettiğiniz anlamına gelir.</p>
+    </div>
+  </section>
+
+  <!-- İletişim -->
+  <section>
+    <div class="section-header">
+      <div class="section-icon">✉️</div>
+      <h2>İletişim</h2>
+    </div>
+    <div class="contact-card">
+      <p>Gizlilik politikamıza ilişkin sorularınız için bizimle iletişime geçebilirsiniz.</p>
+      <a href="mailto:macdevlopbenim@gmail.com">macdevlopbenim@gmail.com</a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p class="app-name">Taraftar Uçuyor</p>
+  <p>© 2026 Tüm hakları saklıdır.</p
